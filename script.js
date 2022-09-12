@@ -6,31 +6,27 @@ const projectFactory = (title) => {
     projects.push(this);
     const project = document.createElement('div');
     project.textContent = info();
+    project.id = projects.length;
     display.appendChild(project);
     return { title, projectTodos, info };
 }
 
 // Factory function for creating a 'todo-item'
-const todoItemFactory = (project, title, description, dueDate, priority) => {
+const todoItemFactory = (projectNumber, title, description, dueDate, priority) => {
     const info = () => 'Hello! I am todo item ' + title +
     '. My description is ' + description + ', my Due Date is ' + dueDate + 
     ', and my Priority is ' + priority;
+    const project = document.getElementById(projectNumber);
+    // console.log(project.info());
     const todo = document.createElement('div');
     todo.textContent = info();
     project.appendChild(todo);
     return { title, description, dueDate, priority, info };
 }
 
-// My Testing Code Area
-// var project = projectFactory('Project 1');
-// var todo = todoItemFactory('Create action plan', 'The project that I need to do', 
-// '09.27.22', 'High');
-// project.sayHello();
-// todo.sayHello();
-
 const display = document.querySelector('#display');
 let projects = [];
 var defaultProject = projectFactory('Default Project');
-// var defaultTodo = todoItemFactory(defaultProject, 'Todo-Item1', "Email Boss", 
-// '09.20.22', 'High');
-console.log(projects[0].info());
+var defaultTodo = todoItemFactory(1, 'Todo-Item1', "Email Boss", 
+'09.20.22', 'High');
+// console.log(projects[0].info());
