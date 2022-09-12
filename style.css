@@ -1,3 +1,9 @@
+body, #display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .project {
     background-color: bisque;
 }

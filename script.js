@@ -25,7 +25,16 @@ const todoItemFactory = (projectNumber, title) => {
     return { title, info };
 }
 
+const bodyHTML = document.querySelector('body');
+
 const display = document.querySelector('#display');
+
+const newProjectBtn = document.createElement('button');
+newProjectBtn.textContent = "Add Project";
+newProjectBtn.addEventListener('click', () => 
+    {projectFactory(prompt('Project Name:'));});
+bodyHTML.appendChild(newProjectBtn);
+
 let projects = [];
 var defaultProject = projectFactory('Default Project');
 var defaultTodo = todoItemFactory(1, 'Todo-Item1');
