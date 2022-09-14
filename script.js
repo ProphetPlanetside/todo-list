@@ -1,6 +1,6 @@
 // Factory function for creating a 'project', a list of 'todo-items'
 const projectFactory = (title) => {
-    info = () => 'Hello! I am project ' + title;
+    info = () => title;
     // Array of Todo Items that will be assigned to this project
     let projectTodos = [];
     projects.push(this);
@@ -17,7 +17,7 @@ const projectFactory = (title) => {
 // Only has a title for now, later I will add dueDate, then description, priority
 // if desired.
 const todoItemFactory = (projectNumber, title) => {
-    const info = () => 'Hello! I am todo item ' + title;
+    const info = () => title;
     const project = document.getElementById(projectNumber);
     const todo = document.createElement('div');
     todo.textContent = info();
@@ -29,11 +29,20 @@ const bodyHTML = document.querySelector('body');
 
 const display = document.querySelector('#display');
 
+// The button that adds new projects
 const newProjectBtn = document.createElement('button');
 newProjectBtn.textContent = "Add Project";
 newProjectBtn.addEventListener('click', () => 
     {projectFactory(prompt('Project Name:'));});
 bodyHTML.appendChild(newProjectBtn);
+
+// A button that adds new todo-items, this will be reworked later; it
+// only adds a todo-item to the first project at this time.
+const newTodoBtn = document.createElement('button');
+newTodoBtn.textContent = "Add Todo-Item";
+newTodoBtn.addEventListener('click', () => 
+    {todoItemFactory(1, prompt('Todo-Item Name:'));});
+bodyHTML.appendChild(newTodoBtn);
 
 let projects = [];
 var defaultProject = projectFactory('Default Project');
