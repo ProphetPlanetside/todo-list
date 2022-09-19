@@ -1,8 +1,8 @@
 // Factory function for creating a 'project', a list of 'todo-items'
 const projectFactory = (title) => {
     info = () => title;
-    // Array of Todo Items that will be assigned to this project
-    let projectTodos = [];
+    // Adds the current project to the 'projects' array. Mainly used for
+    // assigning the correct project.id below.
     projects.push(this);
 
     const project = document.createElement('div');
@@ -12,12 +12,15 @@ const projectFactory = (title) => {
     let projectNumber = project.id;
     display.appendChild(project);
 
-    // A button that adds new todo-items, this will be reworked later; it
-    // only adds a todo-item to the first project at this time.
+    // A button that adds new todo-items. 
     const newTodoBtn = document.createElement('button');
-    newTodoBtn.textContent = "Add Todo-Item";
+    newTodoBtn.textContent = "Add Task";
     newTodoBtn.addEventListener('click', () => 
-        {todoItemFactory(project.id, prompt('Todo-Item Name:'));});
+        {   do{
+            var answer = prompt('Task Name:');
+        } while(answer !== null && answer === "")
+        todoItemFactory(project.id, answer);
+        });
     newTodoBtn.classList.add('todo-button');
     project.appendChild(newTodoBtn);
 
@@ -42,13 +45,18 @@ const bodyHTML = document.querySelector('body');
 
 const display = document.querySelector('#display');
 
-// The button that adds new projects
+// The button that adds new projects, doesn't let you enter in a blank value.
 const newProjectBtn = document.createElement('button');
 newProjectBtn.textContent = "Add Project";
 newProjectBtn.addEventListener('click', () => 
-    {projectFactory(prompt('Project Name:'));});
+    {   do{
+            var answer = prompt('Project Name:');
+        } while(answer !== null && answer === "")
+        projectFactory(answer);
+    });
 bodyHTML.appendChild(newProjectBtn);
 
+// This array is mainly used for assigning the correct project.id to new projects.
 let projects = [];
+// The default project that appears at the initial page-load.
 var defaultProject = projectFactory('Default Project');
-var defaultTodo = todoItemFactory(1, 'Todo-Item1');
