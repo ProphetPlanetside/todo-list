@@ -6,8 +6,8 @@ body, #display {
 
 .project {
     background-color: bisque;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     /* Relative position lets any "todo-button" (position absolute) div appear
     on-top of the project div. */
     position: relative;

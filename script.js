@@ -5,6 +5,9 @@ const projectFactory = (title) => {
     // assigning the correct project.id below.
     projects.push(this);
 
+    // The array of todos/tasks inside of this project.
+    let projectTodos = [];
+
     const project = document.createElement('div');
     project.textContent = info();
     project.classList.add('project');
@@ -18,11 +21,21 @@ const projectFactory = (title) => {
     newTodoBtn.addEventListener('click', () => 
         {   do{
             var answer = prompt('Task Name:');
-        } while(answer !== null && answer === "")
-        todoItemFactory(project.id, answer);
+            } while(answer !== null && answer === "")
+            todoItemFactory(project.id, answer);
         });
     newTodoBtn.classList.add('todo-button');
     project.appendChild(newTodoBtn);
+
+    // A button that will delete the current project.
+    const removeProjectBtn = document.createElement('button');
+    removeProjectBtn.textContent = "Delete Project";
+    removeProjectBtn.addEventListener('click', () =>
+    {   const targetProject = document.getElementById(project.id);
+        targetProject.remove();
+        projects.splice(project.id, 1);
+    });
+    project.appendChild(removeProjectBtn);
 
     return { title, projectTodos, projectNumber, info };
 }
@@ -32,12 +45,32 @@ const projectFactory = (title) => {
 // if desired.
 const todoItemFactory = (projectNumber, title) => {
     const info = () => title;
+    // Add this todo to the array of todos inside of the corresponding project.
+    // ERROR CODE!!
+    // projects[projectNumber - 1].projectTodos.push('hello');
+    // THIS WORKS. So we can access projects[0], but I need to find another way
+    // to push this todoItem into the todo array.
+    // console.log(projects[0].info());
+
     // Allows editing of the related DOM Project element.
     const project = document.getElementById(projectNumber);
     const todo = document.createElement('div');
     todo.textContent = info();
     // Appends this todoItem to the corresponding project.
     project.appendChild(todo);
+
+    // todo.id = projects[projectNumber - 1].projectTodos.length;
+
+    // // A button that will delete the current task.
+    // const removeTodoBtn = document.createElement('button');
+    // removeTodoBtn.textContent = "Delete Task";
+    // removeTodoBtn.addEventListener('click', () =>
+    // {   const targetTask = document.getElementById(todo.id);
+    //     targetTask.remove();
+    //     projects[projectNumber - 1].projectTodos.splice(todo.id, 1);
+    // });
+    // todo.appendChild(removeProjectBtn);
+
     return { title, info };
 }
 
