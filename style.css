@@ -6,4 +6,17 @@ body, #display {
 
 .project {
     background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    /* Relative position lets any "todo-button" (position absolute) div appear
+    on-top of the project div. */
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.todo-button {
+    /* These 2 settings, combined with the relative position of .project, allow
+    this button to always be at the bottom of the project div. */
+    position: absolute;
+    bottom: 0;
 }
