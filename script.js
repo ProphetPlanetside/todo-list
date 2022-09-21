@@ -17,14 +17,16 @@ const projectFactory = (title) => {
     let projectNumber = project.id;
     display.appendChild(project);
 
-    // A button that adds new todo-items. 
+    // A button that adds new todo-items.
+    // If you press CANCEL, then it does nothing. 
     const newTodoBtn = document.createElement('button');
     newTodoBtn.textContent = "Add Task";
     newTodoBtn.addEventListener('click', () => 
         {   do{
             var answer = prompt('Task Name:');
-            } while(answer !== null && answer === "")
-            todoItemFactory(project.id, answer);
+            } while(answer === "")
+            if(answer !== null)
+                {todoItemFactory(project.id, answer);}
         });
     newTodoBtn.classList.add('todo-button');
     project.appendChild(newTodoBtn);
@@ -85,13 +87,15 @@ const bodyHTML = document.querySelector('body');
 const display = document.querySelector('#display');
 
 // The button that adds new projects, doesn't let you enter in a blank value.
+// If you press CANCEL, then it does nothing.
 const newProjectBtn = document.createElement('button');
 newProjectBtn.textContent = "Add Project";
 newProjectBtn.addEventListener('click', () => 
     {   do{
             var answer = prompt('Project Name:');
-        } while(answer !== null && answer === "")
-        projectFactory(answer);
+        } while(answer === "")
+        if(answer !== null) 
+            {projectFactory(answer);}
     });
 bodyHTML.appendChild(newProjectBtn);
 
