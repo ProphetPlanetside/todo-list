@@ -27,6 +27,10 @@ body, #display {
     bottom: 0;
 }
 
+
+
 .delete-project-button {
-    align-self: center;
+    /* align-self: center; */
+    position: absolute;
+    right: 0;
 }

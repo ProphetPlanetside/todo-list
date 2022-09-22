@@ -66,6 +66,11 @@ const todoItemFactory = (projectNumber, title) => {
     todo.id = parseInt(projectNumber + '0' +
         projects[projectNumber - 1].getTodoArray().length);
 
+    // Creates an input element for choosing a duedate for the task/todo.
+    const todoDate = document.createElement('input');
+    todoDate.setAttribute("type", "date");
+    todo.appendChild(todoDate);
+
     // A button that will delete the current task.
     const removeTodoBtn = document.createElement('button');
     removeTodoBtn.textContent = "Delete Task";
