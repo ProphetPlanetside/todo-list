@@ -7,11 +7,12 @@ body {
 #display {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    background-color: rgb(182, 216, 216);
 }
 
 .header {
     background-color:rgb(63, 61, 61);
+    height: 70px;
     color: white;
 }
 
@@ -21,10 +22,10 @@ body {
     width: 100vw;
     background-color:rgb(63, 61, 61);
     color: white;
+    height: 50px;
 }
 
 .project {
-    background-color: bisque;
     display: flex;
     flex-direction: column;
     /* Relative position lets any "todo-button" (position absolute) div appear
@@ -32,6 +33,7 @@ body {
     position: relative;
     padding-bottom: 30px;
     gap: 10px;
+    margin: 20px;
 }
 
 .todo {
