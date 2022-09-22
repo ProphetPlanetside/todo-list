@@ -39,6 +39,7 @@ const projectFactory = (title) => {
         targetProject.remove();
         projects.splice(project.id, 1);
     });
+    removeProjectBtn.classList.add('delete-project-button');
     project.appendChild(removeProjectBtn);
 
     return { title, projectTodos, projectNumber, info, getTodoArray };
@@ -50,17 +51,13 @@ const projectFactory = (title) => {
 const todoItemFactory = (projectNumber, title) => {
     const info = () => title;
     // Add this todo to the array of todos inside of the corresponding project.
-    // ERROR CODE!!
-    // projects[projectNumber - 1].projectTodos.push('hello');
-    // THIS WORKS. So we can access projects[0], but I need to find another way
-    // to push this todoItem into the todo array.
     projects[projectNumber - 1].getTodoArray().push(this);
-    // console.log(projects[0].getTodoArray());
 
     // Allows editing of the related DOM Project element.
     const project = document.getElementById(projectNumber);
     const todo = document.createElement('div');
     todo.textContent = info();
+    todo.classList.add('todo');
     // Appends this todoItem to the corresponding project.
     project.appendChild(todo);
 
@@ -77,6 +74,7 @@ const todoItemFactory = (projectNumber, title) => {
         targetTask.remove();
         projects[projectNumber - 1].getTodoArray().splice(todo.id, 1);
     });
+    // removeTodoBtn.classList.add('delete-button');
     todo.appendChild(removeTodoBtn);
 
     return { title, info };
