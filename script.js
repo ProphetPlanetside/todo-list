@@ -1,6 +1,14 @@
 // Factory function for creating a 'project', a list of 'todo-items'
 const projectFactory = (title) => {
     info = () => title;
+    
+    // This if statement removes the current "Add Project" button, if there
+    // is one.
+    if(projects.length > 0) {
+        const oldAddProjectBtn = document.getElementById('newprojectbutton');
+        oldAddProjectBtn.remove();
+    }
+
     // Adds the current project to the 'projects' array. Mainly used for
     // assigning the correct project.id below.
     projects.push(this);
@@ -41,6 +49,20 @@ const projectFactory = (title) => {
     });
     removeProjectBtn.classList.add('delete-project-button');
     project.appendChild(removeProjectBtn);
+
+    // This block of code creates a new "Add Project" button below this project.
+    const newProjectBtn = document.createElement('button');
+    newProjectBtn.id = 'newprojectbutton';
+    newProjectBtn.textContent = "Add Project";
+    // newProjectBtn.classList.add('add-project-btn');
+    newProjectBtn.addEventListener('click', () => 
+        {   do{
+                var answer = prompt('Project Name:');
+            } while(answer === "")
+            if(answer !== null) 
+                {projectFactory(answer);}
+        });
+    display.appendChild(newProjectBtn);
 
     return { title, projectTodos, projectNumber, info, getTodoArray };
 }
@@ -85,22 +107,7 @@ const todoItemFactory = (projectNumber, title) => {
     return { title, info };
 }
 
-const bodyHTML = document.querySelector('body');
-
 const display = document.querySelector('#display');
-
-// The button that adds new projects, doesn't let you enter in a blank value.
-// If you press CANCEL, then it does nothing.
-const newProjectBtn = document.createElement('button');
-newProjectBtn.textContent = "Add Project";
-newProjectBtn.addEventListener('click', () => 
-    {   do{
-            var answer = prompt('Project Name:');
-        } while(answer === "")
-        if(answer !== null) 
-            {projectFactory(answer);}
-    });
-bodyHTML.appendChild(newProjectBtn);
 
 // This array is mainly used for assigning the correct project.id to new projects.
 let projects = [];
