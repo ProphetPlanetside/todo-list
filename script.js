@@ -96,6 +96,7 @@ const todoItemFactory = (projectNumber, title) => {
     // A button that will delete the current task.
     const removeTodoBtn = document.createElement('button');
     removeTodoBtn.textContent = "Delete Task";
+    removeTodoBtn.classList.add('delete-todo-button');
     removeTodoBtn.addEventListener('click', () =>
     {   const targetTask = document.getElementById(todo.id);
         targetTask.remove();

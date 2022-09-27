@@ -7,22 +7,31 @@ body {
 #display {
     display: flex;
     flex-direction: column;
-    background-color: rgb(182, 216, 216);
+    min-height: 87.5vh;
 }
 
 .header {
     background-color:rgb(63, 61, 61);
     height: 70px;
+    font-weight: bolder;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
     width: 100vw;
     background-color:rgb(63, 61, 61);
     color: white;
     height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* bottom: 0; */
 }
 
 .project {
@@ -34,11 +43,18 @@ body {
     padding-bottom: 30px;
     gap: 10px;
     margin: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgb(224, 142, 142);
 }
 
 .todo {
-    display: flex;
-    justify-content: space-between;
+    font-size: 18px;
+    font-weight: normal;
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 8fr 2fr 1fr;
 }
 
 .todo-button {
@@ -46,6 +62,10 @@ body {
     this button to always be at the bottom of the project div. */
     position: absolute;
     bottom: 0;
+}
+
+.delete-todo-button {
+    margin-left: 5px;
 }
 
 .delete-project-button {
