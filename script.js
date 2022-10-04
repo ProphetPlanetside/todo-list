@@ -1,3 +1,6 @@
+// This project could be bettered by adding the SAVE functionality mentioned in
+// the project from The Odin Project, using JSON.
+
 // Factory function for creating a 'project', a list of 'todo-items'
 const projectFactory = (title) => {
     info = () => title;
